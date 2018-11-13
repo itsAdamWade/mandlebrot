@@ -4,7 +4,7 @@ CFLAGS = \
 	-ggdb \
 	-std=c89 \
 	-pedantic \
-	-pedantic-errors \ 
+	-pedantic-errors \
 	-Werror \
 	-Wextra \
 	-Wmissing-prototypes \
@@ -18,17 +18,19 @@ CFLAGS = \
 	-Wfloat-equal \
 	-Wno-missing-braces \
 	-Wincompatible-pointer-types
-	
-LDFLAGS=
-	
-.PHONY: all clean fractals
-	
-all: fractals
-	
-fractals:
-	$(CC) mandel.c $(CFLAGS) $(LDFLAGS) -o bin\mandel.c
 
-	
+LDFLAGS= -lSDL2
+
+.PHONY: all clean fractals
+
+all: fractals
+
+fractals:
+
+	@mkdir -p bin
+	$(CC) mandel.c $(CFLAGS) $(LDFLAGS) -o bin\mandel
+
+
 clean:
 	$(RM) *.o
 	$(RM) bin\fractals
